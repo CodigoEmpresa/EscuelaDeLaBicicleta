@@ -22,7 +22,11 @@ class MainController extends Controller {
 
 	public function welcome()
 	{
-		$data['seccion'] = '';
+		$data = [
+			'titulo' => 'Inicio',
+			'seccion' => 'Inicio'
+		];
+
 		return view('welcome', $data);
 	}
 
@@ -38,7 +42,7 @@ class MainController extends Controller {
 			$permissions_array = $user_array;
 
 			$permisos = [
-				'permiso1' => array_key_exists(1, $permissions_array) ? intval($permissions_array[1]) : 0
+				'editar_promotores' => array_key_exists(1, $permissions_array) ? intval($permissions_array[1]) : 0
 			];
 
 			$_SESSION['Usuario'] = $user_array;

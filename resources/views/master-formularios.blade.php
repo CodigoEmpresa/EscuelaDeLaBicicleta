@@ -38,7 +38,7 @@
       @show
 
 
-      <title>Torneos</title>
+      <title>{{ $titulo }}</title>
   </head>
 
   <body>
@@ -49,8 +49,8 @@
           <div class="page-header" id="banner">
             <div class="row">
               <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Torneos deportivos interbarriales <span class="text-default">{{ date('Y') }}</span></h1>
-                <p class="lead"><h4>{{$titulo}}</h4></p>
+                <h1>Escuela de la bicicleta <span class="text-default">{{ date('Y') }}</span></h1>
+                <p class="lead"><h4>{{ $titulo }}</h4></p>
               </div>
               <div class="col-lg-4 col-md-5 col-sm-6">
                  <div align="right">
