@@ -32,7 +32,7 @@ class MainController extends Controller {
 
     public function index(Request $request)
 	{
-		$fake_permissions = ['5144', '1'];
+		$fake_permissions = ['71766', '1', '1'];
 		//$fake_permissions = null;
 
 		if ($request->has('vector_modulo') || $fake_permissions)
@@ -42,13 +42,13 @@ class MainController extends Controller {
 			$permissions_array = $user_array;
 
 			$permisos = [
-				'editar_promotores' => array_key_exists(1, $permissions_array) ? intval($permissions_array[1]) : 0
+				'administrar_promotores' => array_key_exists(1, $permissions_array) ? intval($permissions_array[1]) : 0,
+				'administrar_jornadas' => array_key_exists(2, $permissions_array) ? intval($permissions_array[2]) : 0
 			];
 
 			$_SESSION['Usuario'] = $user_array;
             $persona = $this->repositorio_personas->obtener($_SESSION['Usuario'][0]);
 
-			$_SESSION['Usuario']['Recreopersona'] = [];
 			$_SESSION['Usuario']['Roles'] = [];
 			$_SESSION['Usuario']['Persona'] = $persona;
 			$_SESSION['Usuario']['Permisos'] = $permisos;

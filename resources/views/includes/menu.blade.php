@@ -11,25 +11,29 @@
 		<div class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
 			@if (
-				$_SESSION['Usuario']['Permisos']['editar_promotores'] 
+				$_SESSION['Usuario']['Permisos']['administrar_promotores'] ||  
+				$_SESSION['Usuario']['Permisos']['administrar_jornadas']
 			)
-				<li class="dropdown {{ $seccion && in_array($seccion, ['Profesores', 'Jornadas', 'Puntos', 'Administrar localidades', 'Gestion global de sesiones']) ? 'active' : '' }}">
+				<li class="dropdown {{ $seccion && in_array($seccion, ['Promotores']) ? 'active' : '' }}">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							@if($_SESSION['Usuario']['Permisos']['editar_promotores'])
-								<li class="{{ $seccion && $seccion == 'Promotores' ? 'active' : '' }}">
-									<a href="{{ url('promotores') }}">Promotores</a>
-								</li>
-							@endif
-						</ul>
+					<ul class="dropdown-menu">
+						@if($_SESSION['Usuario']['Permisos']['administrar_promotores'])
+							<li class="{{ $seccion && $seccion == 'Promotores' ? 'active' : '' }}">
+								<a href="{{ url('promotores') }}">Promotores</a>
+							</li>
+						@endif
 					</ul>
+				</li>
+				<li class="{{ $seccion && in_array($seccion, ['Gestores']) ? 'active' : '' }}">
+					<a href="{{ url('jornadas') }}">Jornadas</a>
 				</li>
 			@endif
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="http://www.idrd.gov.co/sitio/idrd/" target="_blank">I.D.R.D</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $_SESSION['Usuario']['Persona']['Primer_Apellido'].' '.$_SESSION['Usuario']['Persona']['Primer_Nombre'] }}<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					{{ $_SESSION['Usuario']['Persona']['Primer_Apellido'].' '.$_SESSION['Usuario']['Persona']['Primer_Nombre'] }}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="{{ url('logout') }}">Cerrar sesión</a>

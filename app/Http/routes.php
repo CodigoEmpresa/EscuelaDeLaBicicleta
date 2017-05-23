@@ -22,5 +22,13 @@ Route::any('/logout', 'MainController@logout');
 //rutas con filtro de autenticación
 Route::group(['middleware' => ['web']], function () {
 	Route::get('/welcome', 'MainController@welcome');
+	
+	Route::get('/promotores', 'PromotorController@index');
+	Route::get('/promotores/crear', 'PromotorController@crear');
+	Route::get('/promotores/{id}/editar', 'PromotorController@editar');
+	Route::post('/promotores/procesar', 'PromotorController@procesar');
+
+	Route::any('/jornadas', 'JornadaController@index');
+	Route::any('/jornadas/formulario/{id_jornada?}', 'JornadaController@formulario');
+	Route::post('/jornadas/procesar', 'JornadaController@procesar');
 });
-/*

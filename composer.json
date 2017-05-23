@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "idrd/usuarios": "dev-master"
+        "iatstuti/laravel-cascade-soft-deletes": "1.0.*",
+        "idrd/usuarios": "dev-master",
+        "idrd/parques": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

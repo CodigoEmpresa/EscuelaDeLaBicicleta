@@ -1,4 +1,4 @@
-@extends('master')                              
+@extends('master-formularios')                              
 
 @section('content') 
 	{!! $formulario !!}

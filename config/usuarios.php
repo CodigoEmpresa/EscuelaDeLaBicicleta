@@ -9,7 +9,7 @@ return array(
   'prefijo_ruta' => 'personas', 
   'prefijo_ruta_modulo' => 'actividad', 
  
-  'modelo_persona' => 'Idrd\Usuarios\Repo\Persona', 
+  'modelo_persona' => 'App\Modulos\Persona\Persona', 
   'modelo_documento' => 'Idrd\Usuarios\Repo\Documento', 
   'modelo_pais' => 'Idrd\Usuarios\Repo\Pais', 
   'modelo_ciudad' => 'Idrd\Usuarios\Repo\Ciudad', 
