@@ -28,6 +28,12 @@ class Jornada extends Model
         return $this->belongsTo('App\Modulos\Parque\Parque', 'Id_Parque');
     }
 
+    public function usuarios()
+    {
+        return $this->belongsToMany('App\Modulos\Escuela\Usuario', 'Jornadas_Usuarios', 'Id_Jornada', 'Id_Usuario')
+                    ->withPivot('Hora_Inicial', 'Hora_Final', 'Destreza_Inicial', 'Avance_Logrado', 'Observaciones');
+    }
+
     public function getCode()
     {
         return 'J'.str_pad($this->Id_Promotor, 5, '0', STR_PAD_LEFT);

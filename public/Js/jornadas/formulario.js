@@ -26,7 +26,7 @@ $(function()
         });
     }
 
-	function popular_modal_persona(persona)
+	function popular_acudiente(persona)
 	{
         $('select[name="Id_TipoDocumento"]').val(persona['Id_TipoDocumento']);
         $('input[name="Cedula"]').val($.trim(persona['Cedula']));
