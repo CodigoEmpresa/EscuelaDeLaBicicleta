@@ -30,8 +30,7 @@ class Jornada extends Model
 
     public function usuarios()
     {
-        return $this->belongsToMany('App\Modulos\Escuela\Usuario', 'Jornadas_Usuarios', 'Id_Jornada', 'Id_Usuario')
-                    ->withPivot('Hora_Inicial', 'Hora_Final', 'Destreza_Inicial', 'Avance_Logrado', 'Observaciones');
+        return $this->hasMany('App\Modulos\Escuela\Usuario', 'Id_Jornada');
     }
 
     public function getCode()

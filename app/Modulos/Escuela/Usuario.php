@@ -12,31 +12,18 @@ class Usuario extends Model
     protected $primaryKey = 'Id_Usuario';
     protected $connection = 'mysql';
     protected $dates = ['deleted_at'];
+    protected $guarded = [];
+    protected $fillable = ['Id_Usuario', 'Id_Jornada', 'Nombre_Tipo_Documento_Acudiente', 'Nombre_Acudiente', 'Documento_Acudiente', 'Email_Acudiente', 'Telefono_Acudiente', 'Acudiente_Es_Usuario', 'Nombre_Usuario', 'Genero_Usuario', 'Edad_Usuario', 'CB_Usuario', 'Hora_Inicio_Usuario', 'Hora_Fin_Usuario', 'Destreza_Inicial_Usuario', 'Avance_Logrado_Usuario', 'Observaciones_Usuario', 'created_at', 'updated_at', 'deleted_at'];
 
-    public function __construct()
+    public function __construct($attributes = [])
     {
+        parent::__construct($attributes);
     	$this->table = config('database.connections.mysql.database').'.Usuarios';
-    }
-
-    public function persona()
-    {
-    	return $this->belongsTo('App\Modulos\Persona\Persona', 'Id_Persona');
-    }
-
-    public function acudiente()
-    {
-    	return $this->belongsTo('App\Modulos\Escuela\Acudiente', 'Id_Acudiente');
     }
 
     public function jornadas()
     {
-    	return $this->belongsToMany('App\Modulos\Escuela\Jornada', 'Jornadas_Usuarios', 'Id_Usuario', 'Id_Jornada')
-    				->withPivot('Hora_Inicial', 'Hora_Final', 'Destreza_Inicial', 'Avance_Logrado', 'Observaciones');
-    }
-
-    public function getCode()
-    {
-        return 'J'.str_pad($this->Id_Usuario, 5, '0', STR_PAD_LEFT);
+    	return $this->belongsTo('App\Modulos\Escuela\Jornada','Id_Jornada');
     }
 
     use SoftDeletes, CascadeSoftDeletes;

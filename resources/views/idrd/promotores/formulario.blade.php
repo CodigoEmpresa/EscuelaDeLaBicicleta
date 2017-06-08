@@ -28,17 +28,20 @@
             </div>
         @endif
         <div class="col-xs-12"><br></div>
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12">
             <div class="row">
                 <form action="{{ url('promotores/procesar') }}" method="post">
                     <fieldset>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-md-12">
+                            <h4>Datos personales</h4>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group {{ $errors->has('Cedula') ? 'has-error' : '' }}">
                                 <label class="control-label" for="Cedula">* Documento </label>
                                 <input type="text" name="Cedula" class="form-control" value="{{ $persona ? $persona['Cedula'] : old('Cedula') }}">
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group {{ $errors->has('Id_TipoDocumento') ? 'has-error' : '' }}">
                                 <label class="control-label" for="Id_TipoDocumento">* Tipo documento </label>
                                 <select name="Id_TipoDocumento" id="" class="form-control" data-value="{{ $persona ? $persona['Id_TipoDocumento'] : old('Id_TipoDocumento') }}" title="Seleccionar">
@@ -48,33 +51,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xs-12"></div>
-                        <div class="col-xs-12">
-                            <div class="form-group {{ $errors->has('Primer_Apellido') ? 'has-error' : '' }}">
-                                <label class="control-label" for="Primer_Apellido">* Primer apellido </label>
-                                <input type="text" name="Primer_Apellido" class="form-control" value="{{ $persona ? $persona['Primer_Apellido'] : old('Primer_Apellido') }}">
+                        <div class="col-xs-12 col-md-3">
+                            <div class="form-group {{ $errors->has('Fecha_Nacimiento') ? 'has-error' : '' }}">
+                                <label class="control-label" for="Fecha_Nacimiento">* Fecha de nacimiento </label>
+                                <input type="text" name="Fecha_Nacimiento" data-role="datepicker" class="form-control" value="{{ $persona ? $persona['Fecha_Nacimiento'] : old('Fecha_Nacimiento') }}">
                             </div>
                         </div>
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label class="control-label" for="Segundo_Apellido">Segundo apellido </label>
-                                <input type="text" name="Segundo_Apellido" class="form-control" value="{{ $persona ? $persona['Segundo_Apellido'] : old('Segundo_Apellido') }}">
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="form-group {{ $errors->has('Primer_Nombre') ? 'has-error' : '' }}">
-                                <label class="control-label" for="Primer_Nombre">* Primer nombre </label>
-                                <input type="text" name="Primer_Nombre" class="form-control" value="{{ $persona ? $persona['Primer_Nombre'] : old('Primer_Nombre') }}">
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label class="control-label" for="Segundo_Nombre">Segundo nombre </label>
-                                <input type="text" name="Segundo_Nombre" class="form-control" value="{{ $persona ? $persona['Segundo_Nombre'] : old('Segundo_Nombre') }}">
-                            </div>
-                        </div>
-                        <div class="col-xs-12"><hr></div>
-                        <div class="col-xs-12 col-md-6 {{ $errors->has('Id_Genero') ? 'has-error' : '' }}">
+                        <div class="col-xs-12 col-md-3 {{ $errors->has('Id_Genero') ? 'has-error' : '' }}">
                             <div class="form-group">
                                 <label class="control-label" for="Id_Genero">* Género</label><br>
                                 <div class="btn-group" data-toggle="buttons">
@@ -87,14 +70,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12"></div>
-                        <div class="col-xs-12 col-md-6">
-                            <div class="form-group {{ $errors->has('Fecha_Nacimiento') ? 'has-error' : '' }}">
-                                <label class="control-label" for="Fecha_Nacimiento">* Fecha de nacimiento </label>
-                                <input type="text" name="Fecha_Nacimiento" data-role="datepicker" class="form-control" value="{{ $persona ? $persona['Fecha_Nacimiento'] : old('Fecha_Nacimiento') }}">
+                        <div class="col-xs-12 col-md-3">
+                            <div class="form-group {{ $errors->has('Primer_Nombre') ? 'has-error' : '' }}">
+                                <label class="control-label" for="Primer_Nombre">* Primer nombre </label>
+                                <input type="text" name="Primer_Nombre" class="form-control" value="{{ $persona ? $persona['Primer_Nombre'] : old('Primer_Nombre') }}">
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Segundo_Nombre">Segundo nombre </label>
+                                <input type="text" name="Segundo_Nombre" class="form-control" value="{{ $persona ? $persona['Segundo_Nombre'] : old('Segundo_Nombre') }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <div class="form-group {{ $errors->has('Primer_Apellido') ? 'has-error' : '' }}">
+                                <label class="control-label" for="Primer_Apellido">* Primer apellido </label>
+                                <input type="text" name="Primer_Apellido" class="form-control" value="{{ $persona ? $persona['Primer_Apellido'] : old('Primer_Apellido') }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Segundo_Apellido">Segundo apellido </label>
+                                <input type="text" name="Segundo_Apellido" class="form-control" value="{{ $persona ? $persona['Segundo_Apellido'] : old('Segundo_Apellido') }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-12"><hr></div>
+                        <div class="col-md-12">
+                            <h4>Otros datos</h4>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group {{ $errors->has('Id_Etnia') ? 'has-error' : '' }}">
                                 <label class="control-label" for="Id_Etnia">* Etnia </label>
                                 <select name="Id_Etnia" id="" class="form-control" data-value="{{ $persona ? $persona['Id_Etnia'] : old('Id_Etnia') }}" title="Seleccionar">
@@ -104,8 +108,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xs-12"><hr></div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group {{ $errors->has('Id_Pais') ? 'has-error' : '' }}">
                                 <label class="control-label" for="Id_Pais">* País </label>
                                 <select name="Id_Pais" id="" class="form-control" data-value="{{ $persona ? $persona['Id_Pais'] : old('Id_Pais') }}" data-live-search="true" title="Seleccionar">
@@ -115,7 +118,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group">
                                 <label class="control-label" for="Nombre_Ciudad">Ciudad </label>
                                 <select name="Nombre_Ciudad" id="" class="form-control" data-value="{{ $persona ? $persona['Nombre_Ciudad'] : old('Nombre_Ciudad') }}" data-live-search="true" title="Seleccionar">
@@ -138,27 +141,6 @@
                         <div class="col-xs-12"><br></div>
                     </fieldset>
                 </form>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="form-group">
-                <label for="">Otros datos: </label>
-            </div>
-            <div class="row">
-                @if ($persona && $persona->promotor)
-                    <div class="col-md-12">
-                        <small>
-                        </small>
-                    </div>
-                    <div class="col-md-12">
-                        <br>
-                        <a href="{{ url('actividad_usuario/'.$persona['Cedula']) }}" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Editar permisos</a>
-                    </div>
-                @else
-                    <div class="col-md-12">
-                        <small>No disponible.</small>
-                    </div>
-                @endif
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ class Jornadas extends Migration
             $table->date('Fecha');
             $table->string('Clima');
             $table->string('Nombre_Encargado');
+            $table->text('Observaciones_Generales');
             $table->timestamps();
             $table->softDeletes();
 

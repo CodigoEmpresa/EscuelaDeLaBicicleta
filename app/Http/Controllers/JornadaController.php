@@ -10,7 +10,6 @@ use Idrd\Usuarios\Repo\Documento;
 use Idrd\Usuarios\Repo\Pais;
 use Idrd\Usuarios\Repo\Etnia;
 use Idrd\Parques\Repo\Localidad;
-use App\Http\Requests;
 use App\Http\Requests\GuardarJornada;
 
 class JornadaController extends Controller
@@ -90,7 +89,30 @@ class JornadaController extends Controller
 
     public function procesar(GuardarJornada $request)
     {
+    	if($request->input('Id_Jornada') == '0')
+    		$jornada = new Jornada;
+    	else
+    		$jornada = Jornada::find($request->input('Id_Jornada'));
 
+    	$jornada->Id_Promotor = $request->input('Id_Promotor');
+		$jornada->Id_Parque = $request->input('Id_Parque');
+		$jornada->Fecha = $request->input('Fecha');
+		$jornada->Clima = $request->input('Clima');
+		$jornada->Nombre_Encargado = $request->input('Nombre_Encargado');
+		$jornada->Observaciones_Generales = $request->input('Observaciones_Generales');
+		$jornada->save();
+
+		$to_create = [];
+		$usuarios = json_decode($request->input('usuarios'), true);
+        $jornada->usuarios()->delete();
+
+		foreach ($usuarios as &$usuario)
+		{
+			unset($usuario['Id_Usuario']);
+			$jornada->usuarios()->create($usuario);
+		}
+
+		return redirect('/jornadas/formulario/'.$jornada['Id_Jornada'])->with(['status' => 'success']);
     }
 
     private function aplicarFiltro($qb, $request)
