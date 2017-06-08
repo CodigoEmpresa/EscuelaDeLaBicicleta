@@ -79,7 +79,7 @@
                                     {{ $jornada->parque['Nombre'] }}
                                 </td>
                                 <td>
-                                    <a href="{{ url('jornada/'.$jornada->Id_Jornada.'/editar') }}" class="pull-right btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                    <a href="{{ url('jornadas/formulario/'.$jornada->Id_Jornada) }}" class="pull-right btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="Editar">
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </a>
                                 </td>

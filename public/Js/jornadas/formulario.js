@@ -47,6 +47,8 @@ $(function()
             value = value ? value : '';
             if($(form+' *[name="'+key+'"]').is(':radio'))
                 $(form+' *[name="'+key+'"][value="'+value+'"]').trigger('click');
+            else if($(form+' *[name="'+key+'"]').is(':checkbox'))
+                $(form+' *[name="'+key+'"][value="'+value+'"]').trigger('click');
             else if($(form+' *[name="'+key+'"]').is('select'))
                 $(form+' *[name="'+key+'"]').selectpicker('val', value);
             else if($(form+' *[name="'+key+'"]').is('p'))
@@ -63,8 +65,6 @@ $(function()
     function eliminarObject(current)
     {
         var $odl_tr = $(table+' tr[id="'+current[pk_object]+'"]');
-
-        console.log($odl_tr);
 
         if ($odl_tr.length)
         {
@@ -116,6 +116,7 @@ $(function()
         var id = $(this).closest('tr').prop('id');
         var object = objects[id];
         populateObject(object);
+        $(form).validator('validate');
         $(modal).modal('show');
     });
 
@@ -146,8 +147,6 @@ $(function()
             {
                 object[e.name] = e.value;
             });
-
-            console.log(object);
 
             if(object[pk_object] === '')
             {

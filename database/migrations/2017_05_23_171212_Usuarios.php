@@ -23,7 +23,7 @@ class Usuarios extends Migration
             $table->string('Telefono_Acudiente')->nullable();
             $table->boolean('Acudiente_Es_Usuario')->nullable();
             $table->string('Nombre_Usuario');
-            $table->boolean('Genero_Usuario')->nullable();
+            $table->string('Genero_Usuario')->nullable();
             $table->integer('Edad_Usuario');
             $table->string('CB_Usuario');
             $table->time('Hora_Inicio_Usuario');

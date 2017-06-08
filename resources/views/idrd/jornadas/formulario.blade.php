@@ -61,7 +61,7 @@
 						</div>
                         <div class="col-md-12 form-group">
                             <label for="" class="control-label">Observaciones</label>
-                            <textarea name="Observaciones_Generales" id="Observaciones_Generales" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="Observaciones_Generales" id="Observaciones_Generales" cols="30" rows="10" class="form-control">{{ $jornada ? $jornada['Observaciones_Generales'] : old('Observaciones_Generales') }}</textarea>
                         </div>
                         <div class="col-xs-12">
                             <hr>
