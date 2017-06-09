@@ -102,7 +102,6 @@ class JornadaController extends Controller
 		$jornada->Observaciones_Generales = $request->input('Observaciones_Generales');
 		$jornada->save();
 
-		$to_create = [];
 		$usuarios = json_decode($request->input('usuarios'), true);
         $jornada->usuarios()->delete();
 
