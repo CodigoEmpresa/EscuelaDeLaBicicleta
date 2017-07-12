@@ -61,6 +61,9 @@
                             <th>
                                 Parque
                             </th>
+                            <th>
+                                # Usuarios
+                            </th>
                             <th data-priority="2" class="no-sort" style="width: 30px;">
                                 
                             </th>
@@ -77,6 +80,9 @@
                                 </td>
                                 <td>
                                     {{ $jornada->parque['Nombre'] }}
+                                </td>
+                                <td>
+                                    {{ $jornada->usuarios->count() }}
                                 </td>
                                 <td>
                                     <a href="{{ url('jornadas/formulario/'.$jornada->Id_Jornada) }}" class="pull-right btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="Editar">

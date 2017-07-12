@@ -36,7 +36,7 @@ class JornadaController extends Controller
 			$qb = null;
 			$elementos = $qb;
 		} else {
-			$qb = Jornada::with('parque')
+			$qb = Jornada::with('parque', 'usuarios')
 							->where('Id_Promotor', $this->promotor['Id_Promotor']);
 
 			$qb = $this->aplicarFiltro($qb, $request);
