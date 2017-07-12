@@ -9,8 +9,8 @@ $(function()
     var fields = [
         'Nombre_Usuario',
         'Nombre_Acudiente',
-        'Nombre_Tipo_Documento_Acudiente',
-        'Documento_Acudiente',
+        'Nombre_Tipo_Documento_Usuario',
+        'Documento_Usuario',
         'Email_Acudiente',
         'Telefono_Acudiente',
         'Genero_Usuario',

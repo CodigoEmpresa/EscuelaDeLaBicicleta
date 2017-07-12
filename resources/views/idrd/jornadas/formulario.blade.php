@@ -128,21 +128,66 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5>Acudiente</h5>
+                        <h5>Usuario</h5>
                     </div>
-                    <div class="col-md-3 form-group">
-                        <div class="form-group">
-                            <label class="control-label" for="Nombre_Tipo_Documento_Acudiente">Tipo documento</label>
-                            <select class="form-control" name="Nombre_Tipo_Documento_Acudiente" id="Nombre_Tipo_Documento_Acudiente" title="Seleccionar" required>
-                                @foreach ($documentos as $documento)
-                                    <option value="{{ $documento['Nombre_TipoDocumento'] }}">{{ $documento['Descripcion_TipoDocumento'] }}</option>
-                                @endforeach
-                            </select>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                <div class="form-group">
+                                    <label class="control-label" for="Nombre_Tipo_Documento_Usuario">Tipo documento</label>
+                                    <select class="form-control" name="Nombre_Tipo_Documento_Usuario" id="Nombre_Tipo_Documento_Usuario" title="Seleccionar" required>
+                                        @foreach ($documentos as $documento)
+                                            <option value="{{ $documento['Nombre_TipoDocumento'] }}">{{ $documento['Descripcion_TipoDocumento'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="control-label" for="Documento_Usuario">Documento</label>
+                                <input class="form-control" name="Documento_Usuario" type="number" value="" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label">Nombre</label>
+                                <input class="form-control" name="Nombre_Usuario" type="text" value="" required>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="Documento_Acudiente">Documento</label>
-                        <input class="form-control" name="Documento_Acudiente" type="number" value="" required>
+                        <label class="control-label">Edad</label>
+                        <input class="form-control" name="Edad_Usuario" type="number" min=0 value="" required>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label" for="CB_Usuario">Ciclo biológico</label>
+                        <select class="form-control" name="CB_Usuario" id="CB_Usuario" title="Seleccionar" required>
+                            <option value="P.I">Primera infancia</option>
+                            <option value="I">Infancia</option>
+                            <option value="ADO">Adolescencia</option>
+                            <option value="ADU">Adultez</option>
+                            <option value="VE">Vejez</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="control-label" for="genero1">Género</label> <br>
+                        <label class="radio-inline">
+                            <input type="radio" name="Genero_Usuario" id="genero1" value="M" required> Masculino
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="Genero_Usuario" id="genero2" value="F" required> Femenino
+                        </label>
+                    </div>
+                    <div class="col-md-3" style="padding-top: 22px;">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="Acudiente_Es_Usuario" value="1">
+                                El usuario es el acudiente
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>Acudiente</h5>
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="form-group">
@@ -161,47 +206,6 @@
                             <label class="control-label" for="Telefono_Acudiente">Teléfono</label>
                             <input class="form-control" name="Telefono_Acudiente" type="number" value="" required>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="Acudiente_Es_Usuario" value="1">
-                                El acudiente es el usuario
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                    <div class="col-md-12">
-                        <h5>Usuario</h5>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label class="control-label" for="genero1">Género</label> <br>
-                        <label class="radio-inline">
-                            <input type="radio" name="Genero_Usuario" id="genero1" value="M" required> Masculino
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="Genero_Usuario" id="genero2" value="F" required> Femenino
-                        </label>
-                    </div>
-                    <div class="col-md-3 form-group">
-                        <label class="control-label">Edad</label>
-                        <input class="form-control" name="Edad_Usuario" type="number" min=0 value="" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="control-label">Nombre</label>
-                        <input class="form-control" name="Nombre_Usuario" type="text" value="" required>
-                    </div>
-                    <div class="col-md-3 form-group">
-                        <label class="control-label" for="CB_Usuario">Ciclo biológico</label>
-                        <select class="form-control" name="CB_Usuario" id="CB_Usuario" title="Seleccionar" required>
-                            <option value="P.I">Primera infancia</option>
-                            <option value="I">Infancia</option>
-                            <option value="ADO">Adolescencia</option>
-                            <option value="ADU">Adultez</option>
-                            <option value="VE">Vejez</option>
-                        </select>
                     </div>
                     <div class="col-md-12">
                         <hr>

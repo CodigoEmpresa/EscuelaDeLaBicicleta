@@ -16,13 +16,13 @@ class Usuarios extends Migration
         {
             $table->increments('Id_Usuario');
             $table->integer('Id_Jornada')->unsigned();
-            $table->string('Nombre_Tipo_Documento_Acudiente')->unsigned();
             $table->string('Nombre_Acudiente');
-            $table->integer('Documento_Acudiente')->unsigned();
             $table->string('Email_Acudiente')->nullable();
             $table->string('Telefono_Acudiente')->nullable();
             $table->boolean('Acudiente_Es_Usuario')->nullable();
             $table->string('Nombre_Usuario');
+            $table->string('Nombre_Tipo_Documento_Usuario')->nullable();
+            $table->string('Documento_Usuario')->nullable();
             $table->string('Genero_Usuario')->nullable();
             $table->integer('Edad_Usuario');
             $table->string('CB_Usuario');
