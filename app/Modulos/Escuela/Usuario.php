@@ -13,7 +13,7 @@ class Usuario extends Model
     protected $connection = 'mysql';
     protected $dates = ['deleted_at'];
     protected $guarded = [];
-    protected $fillable = ['Id_Usuario', 'Id_Jornada', 'Nombre_Tipo_Documento_Acudiente', 'Nombre_Acudiente', 'Documento_Acudiente', 'Email_Acudiente', 'Telefono_Acudiente', 'Acudiente_Es_Usuario', 'Nombre_Usuario', 'Genero_Usuario', 'Edad_Usuario', 'CB_Usuario', 'Hora_Inicio_Usuario', 'Hora_Fin_Usuario', 'Destreza_Inicial_Usuario', 'Avance_Logrado_Usuario', 'Observaciones_Usuario', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['Id_Usuario', 'Id_Jornada', 'Nombre_Acudiente', 'Email_Acudiente', 'Telefono_Acudiente', 'Acudiente_Es_Usuario', 'Nombre_Usuario', 'Nombre_Tipo_Documento_Usuario', 'Documento_Usuario', 'Genero_Usuario', 'Edad_Usuario', 'CB_Usuario', 'Hora_Inicio_Usuario', 'Hora_Fin_Usuario', 'Destreza_Inicial_Usuario', 'Avance_Logrado_Usuario', 'Observaciones_Usuario', 'created_at', 'updated_at', 'deleted_at'];
 
     public function __construct($attributes = [])
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modulos\Escuela\Usuario;
 use Illuminate\Http\Request;
 use App\Modulos\Escuela\Promotor;
 use App\Modulos\Escuela\Jornada;
@@ -103,7 +104,7 @@ class JornadaController extends Controller
 		$jornada->save();
 
 		$usuarios = json_decode($request->input('usuarios'), true);
-        $jornada->usuarios()->delete();
+        $jornada->usuarios()->forceDelete();
 
 		foreach ($usuarios as &$usuario)
 		{
@@ -112,6 +113,13 @@ class JornadaController extends Controller
 		}
 
 		return redirect('/jornadas/formulario/'.$jornada['Id_Jornada'])->with(['status' => 'success']);
+    }
+
+    public function consultarUsuario(Request $request)
+    {
+        $persona = Usuario::where('Documento_Usuario', $request->input('key'))->first();
+
+        return response()->json($persona);
     }
 
     private function aplicarFiltro($qb, $request)

@@ -8,16 +8,16 @@ $(function()
 
     var fields = [
         'Nombre_Usuario',
-        'Nombre_Acudiente',
         'Nombre_Tipo_Documento_Usuario',
         'Documento_Usuario',
-        'Email_Acudiente',
-        'Telefono_Acudiente',
         'Genero_Usuario',
         'Edad_Usuario',
         'CB_Usuario',
         'Hora_Inicio_Usuario',
         'Hora_Fin_Usuario',
+        'Nombre_Acudiente',
+        'Email_Acudiente',
+        'Telefono_Acudiente',
         'Destreza_Inicial_Usuario',
         'Avance_Logrado_Usuario',
         'Observaciones_Usuario'

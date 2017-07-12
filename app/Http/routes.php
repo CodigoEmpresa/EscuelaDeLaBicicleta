@@ -31,4 +31,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::any('/jornadas', 'JornadaController@index');
 	Route::any('/jornadas/formulario/{id_jornada?}', 'JornadaController@formulario');
 	Route::post('/jornadas/procesar', 'JornadaController@procesar');
+	Route::post('/jornadas/consultarUsuario', 'JornadaController@consultarUsuario');
 });

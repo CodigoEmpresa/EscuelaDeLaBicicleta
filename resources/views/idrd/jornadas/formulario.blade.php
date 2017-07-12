@@ -3,6 +3,7 @@
 
     <script src="{{ asset('public/components/bootstrap-validator/dist/validator.min.js') }}"></script>
     <script src="{{ asset('public/Js/jornadas/formulario.js') }}"></script>
+    <script src="{{ asset('public/Js/jornadas/validaciones.js') }}"></script>
 @stop
 
 <div class="content">
@@ -81,16 +82,16 @@
                                 <thead>
                         			<tr>
                                         <th class="all">Usuario</th>
-                                        <th class="all">Acudiente</th>
                                         <th class="all">Tipo <br> de doc.</th>
                                         <th class="all">Nº de documento <br> acudiente</th>
-                                        <th class="none">Correo</th>
-                                        <th class="none">Télefono</th>
-                                        <th class="none">Genero</th>
-                                        <th class="none">Edad</th>
-                                        <th class="none">CB</th>
+                                        <th class="all">Genero</th>
+                                        <th class="all">Edad</th>
+                                        <th class="all">CB</th>
                                         <th class="none">Hora inicio</th>
                                         <th class="none">Hora fin</th>
+                                        <th class="none">Acudiente</th>
+                                        <th class="none">Correo</th>
+                                        <th class="none">Télefono</th>
                                         <th class="all">Destreza <br> inicial</th>
                                         <th class="all">Avance <br> logrado</th>
                         				<th class="none">Observaciones</th>
@@ -144,7 +145,9 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label class="control-label" for="Documento_Usuario">Documento</label>
-                                <input class="form-control" name="Documento_Usuario" type="number" value="" required>
+                                <div class="input-group">
+                                    <input class="form-control" data-url="{{ url('jornadas/consultarUsuario') }}" name="Documento_Usuario" type="number" value="" required>
+                                </div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="control-label">Nombre</label>
