@@ -12,21 +12,29 @@
 			<ul class="nav navbar-nav">
 			@if (
 				$_SESSION['Usuario']['Permisos']['administrar_promotores'] ||  
-				$_SESSION['Usuario']['Permisos']['administrar_jornadas']
+				$_SESSION['Usuario']['Permisos']['administrar_jornadas'] ||
+				$_SESSION['Usuario']['Permisos']['administrar_reportes']
 			)
-				<li class="dropdown {{ $seccion && in_array($seccion, ['Promotores']) ? 'active' : '' }}">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						@if($_SESSION['Usuario']['Permisos']['administrar_promotores'])
+				@if($_SESSION['Usuario']['Permisos']['administrar_promotores'])
+					<li class="dropdown {{ $seccion && in_array($seccion, ['Promotores']) ? 'active' : '' }}">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración <span class="caret"></span></a>
+						<ul class="dropdown-menu">
 							<li class="{{ $seccion && $seccion == 'Promotores' ? 'active' : '' }}">
 								<a href="{{ url('promotores') }}">Promotores</a>
 							</li>
-						@endif
-					</ul>
-				</li>
-				<li class="{{ $seccion && in_array($seccion, ['Gestores']) ? 'active' : '' }}">
-					<a href="{{ url('jornadas') }}">Jornadas</a>
-				</li>
+						</ul>
+					</li>
+				@endif
+				@if($_SESSION['Usuario']['Permisos']['administrar_jornadas'])
+					<li class="{{ $seccion && in_array($seccion, ['Gestores']) ? 'active' : '' }}">
+						<a href="{{ url('jornadas') }}">Jornadas</a>
+					</li>
+				@endif
+				@if($_SESSION['Usuario']['Permisos']['administrar_reportes'])
+					<li class="{{ $seccion && in_array($seccion, ['Reportes']) ? 'active' : '' }}">
+						<a href="{{ url('reportes') }}">Reportes</a>
+					</li>
+				@endif
 			@endif
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

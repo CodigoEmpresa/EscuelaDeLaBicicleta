@@ -32,7 +32,7 @@ class MainController extends Controller {
 
     public function index(Request $request)
 	{
-		$fake_permissions = ['71766', '1', '1'];
+		$fake_permissions = ['71766', '1', '1', '1'];
 		//$fake_permissions = null;
 
 		if ($request->has('vector_modulo') || $fake_permissions)
@@ -43,7 +43,8 @@ class MainController extends Controller {
 
 			$permisos = [
 				'administrar_promotores' => array_key_exists(1, $permissions_array) ? intval($permissions_array[1]) : 0,
-				'administrar_jornadas' => array_key_exists(2, $permissions_array) ? intval($permissions_array[2]) : 0
+				'administrar_jornadas' => array_key_exists(2, $permissions_array) ? intval($permissions_array[2]) : 0,
+				'administrar_reportes' => array_key_exists(2, $permissions_array) ? intval($permissions_array[3]) : 0
 			];
 
 			$_SESSION['Usuario'] = $user_array;
