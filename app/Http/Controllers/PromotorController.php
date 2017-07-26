@@ -59,6 +59,20 @@ class PromotorController extends Controller {
 		return $this->cargarFormulario($promotor);
 	}
 
+    public function reporte()
+    {
+        $datos = [
+            'titulo' => 'Reporte',
+            'seccion' => 'Reporte',
+            'formulario' => ''
+        ];
+
+
+        return view('reporte',$datos);
+
+
+    }
+
 	public function procesar(GuardarPromotor $request)
 	{
         if ($request->input('Id_Persona') == '0')

@@ -16,13 +16,14 @@ Route::get('/personas/service/buscar/{key}', '\Idrd\Usuarios\Controllers\Persona
 Route::get('/personas/service/ciudad/{id_pais}', '\Idrd\Usuarios\Controllers\LocalizacionController@buscarCiudades');
 Route::post('/personas/service/procesar/', '\Idrd\Usuarios\Controllers\PersonaController@procesar');
 
+
 Route::any('/', 'MainController@index');
 Route::any('/logout', 'MainController@logout');
 
 //rutas con filtro de autenticación
 Route::group(['middleware' => ['web']], function () {
 	Route::get('/welcome', 'MainController@welcome');
-	
+    Route::any('/reportes', 'PromotorController@reporte');
 	Route::get('/promotores', 'PromotorController@index');
 	Route::get('/promotores/crear', 'PromotorController@crear');
 	Route::get('/promotores/{id}/editar', 'PromotorController@editar');
