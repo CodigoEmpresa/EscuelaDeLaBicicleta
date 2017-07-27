@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modulos\Escuela\Jornada;
 use Illuminate\Http\Request;
 use App\Http\Requests\GuardarPromotor;
 use App\Http\Controllers\Controller;
@@ -59,19 +60,7 @@ class PromotorController extends Controller {
 		return $this->cargarFormulario($promotor);
 	}
 
-    public function reporte()
-    {
-        $datos = [
-            'titulo' => 'Reporte',
-            'seccion' => 'Reporte',
-            'formulario' => ''
-        ];
 
-
-        return view('reporte',$datos);
-
-
-    }
 
 	public function procesar(GuardarPromotor $request)
 	{

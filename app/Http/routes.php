@@ -23,7 +23,8 @@ Route::any('/logout', 'MainController@logout');
 //rutas con filtro de autenticación
 Route::group(['middleware' => ['web']], function () {
 	Route::get('/welcome', 'MainController@welcome');
-    Route::any('/reportes', 'PromotorController@reporte');
+    Route::any('/reportes', 'MainController@reporte');
+    Route::any('/fecha_reporte', 'MainController@fecha_reporte');
 	Route::get('/promotores', 'PromotorController@index');
 	Route::get('/promotores/crear', 'PromotorController@crear');
 	Route::get('/promotores/{id}/editar', 'PromotorController@editar');

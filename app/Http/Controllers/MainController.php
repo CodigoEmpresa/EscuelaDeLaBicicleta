@@ -6,6 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Idrd\Usuarios\Repo\PersonaInterface;
 use Illuminate\Http\Request;
+use DB;
+use Yajra\Datatables\Facades\Datatables;
 
 class MainController extends Controller {
 
@@ -29,6 +31,24 @@ class MainController extends Controller {
 
 		return view('welcome', $data);
 	}
+
+
+    public function reporte()
+    {
+
+       $datos = [
+            'titulo' => 'Reporte',
+            'seccion' => 'Reporte',
+            'formulario' => ''
+        ];
+        return view('reporte',$datos);
+    }
+
+    public function fecha_reporte(Request $request){
+
+       return Datatables::of(DB::table('vista_reporte')->whereBetween('Fecha',[$request[0]['value'],$request[1]['value']]))->make(true);
+
+    }
 
     public function index(Request $request)
 	{
