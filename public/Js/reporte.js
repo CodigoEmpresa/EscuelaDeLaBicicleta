@@ -5,7 +5,13 @@
 $(function() {
     $('.datatable').DataTable({ "language": {
         "url": 'public/Spanish.json'
-    },responsive:true});
+    },responsive:true, dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],});
 
     $('form[name=form_busqueda_reporte]').submit(function(e)
     {
@@ -27,6 +33,13 @@ $(function() {
                 "language": {
                     "url": 'public/Spanish.json'
                 },
+                dom: 'Bfrtip',
+                    buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
                 responsive:true,
                 processing: true,
                 serverSide: true,
