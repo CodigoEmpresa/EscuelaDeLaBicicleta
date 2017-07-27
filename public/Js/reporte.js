@@ -3,6 +3,9 @@
  * Created by daniel on 26/07/17.
  */
 $(function() {
+    $('.datatable').DataTable({ "language": {
+        "url": 'public/Spanish.json'
+    },responsive:true});
 
     $('form[name=form_busqueda_reporte]').submit(function(e)
     {
@@ -21,6 +24,9 @@ $(function() {
 
             table = $('.datatable');
             table.DataTable({
+                "language": {
+                    "url": 'public/Spanish.json'
+                },
                 responsive:true,
                 processing: true,
                 serverSide: true,

@@ -25,7 +25,9 @@ $(function()
 
 	var objects = {};
     var old_objects = $.parseJSON($(input).val() || null) || {};
-    var table_objects = $(table).DataTable();
+    var table_objects = $(table).DataTable({ "language": {
+        "url": 'public/Spanish.json'
+    }});
 
     function generateUUID() 
     {

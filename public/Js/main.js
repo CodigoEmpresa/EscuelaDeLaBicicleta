@@ -219,6 +219,9 @@ $(function()
 	$('select:not([multiple],[data-ignore-selectpicker])').selectpicker();
 
 	$('table.default').DataTable({
+        "language": {
+            "url": 'public/Spanish.json'
+        },
 		responsive: true,
 		columnDefs: [
 			{
