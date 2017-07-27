@@ -10,7 +10,10 @@ $(function() {
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
+            {extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'}
+
         ],});
 
     $('form[name=form_busqueda_reporte]').submit(function(e)
@@ -38,7 +41,10 @@ $(function() {
                     'copyHtml5',
                     'excelHtml5',
                     'csvHtml5',
-                    'pdfHtml5'
+                        {extend: 'pdfHtml5',
+                            orientation: 'landscape',
+                            pageSize: 'LEGAL'}
+
                 ],
                 responsive:true,
                 processing: true,
