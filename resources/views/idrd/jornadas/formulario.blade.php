@@ -58,7 +58,7 @@
 						</div>
 						<div class="col-md-3 form-group {{ $errors->has('Nombre_Encargado') ? 'has-error' : '' }}">
 							<label for="" class="control-label">* Encargado(s) <small>separados por ","</small></label>
-							<input class="form-control" type="text" name="Nombre_Encargado" value="{{ $jornada ? $jornada['Nombre_Encargado'] : old('Nombre_Encargado', $promotor->persona->toFriendlyString()) }}">
+							<input class="form-control" type="text" name="Nombre_Encargado" value="{{ $jornada ? $jornada['Nombre_Encargado'] : old('Nombre_Encargado', $promotor ? $promotor->persona->toFriendlyString() : '') }}">
 						</div>
                         <div class="col-md-12 form-group">
                             <label for="" class="control-label">Observaciones</label>

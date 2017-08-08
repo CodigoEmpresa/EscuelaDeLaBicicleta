@@ -57,6 +57,9 @@ return [
             'prefix' => '',
             'strict' => false,
             'engine' => 'InnoDB',
+            'options'   => [
+                        \PDO::ATTR_EMULATE_PREPARES => true
+                    ]
         ],
 
         'db_principal' => [
@@ -71,6 +74,9 @@ return [
             'prefix' => '',
             'strict' => false,
             'engine' => 'InnoDB',
+            'options'   => [
+                        \PDO::ATTR_EMULATE_PREPARES => true
+                    ]
         ],
 
         'db_parques' => [
@@ -85,6 +91,9 @@ return [
             'prefix' => '',
             'strict' => false,
             'engine' => 'InnoDB',
+            'options'   => [
+                        \PDO::ATTR_EMULATE_PREPARES => true
+                    ]
         ]
     ],
 

@@ -8,6 +8,7 @@ use Idrd\Usuarios\Repo\PersonaInterface;
 use Illuminate\Http\Request;
 use DB;
 use Yajra\Datatables\Facades\Datatables;
+use Illuminate\Support\Facades\Session;
 
 class MainController extends Controller {
 
@@ -52,8 +53,8 @@ class MainController extends Controller {
 
     public function index(Request $request)
 	{
-		$fake_permissions = ['71766', '1', '1', '1'];
-		//$fake_permissions = null;
+		//$fake_permissions = ['71766', '1', '1', '1'];
+		$fake_permissions = null;
 
 		if ($request->has('vector_modulo') || $fake_permissions)
 		{	
