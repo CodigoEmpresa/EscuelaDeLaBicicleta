@@ -28,6 +28,11 @@ class Jornada extends Model
         return $this->belongsTo('App\Modulos\Parque\Parque', 'Id_Parque');
     }
 
+    public function localidad()
+    {
+        return $this->belongsTo('App\Modulos\Parque\Localidad', 'Id_Localidad');
+    }
+
     public function usuarios()
     {
         return $this->hasMany('App\Modulos\Escuela\Usuario', 'Id_Jornada');
@@ -35,7 +40,7 @@ class Jornada extends Model
 
     public function getCode()
     {
-        return 'J'.str_pad($this->Id_Promotor, 5, '0', STR_PAD_LEFT);
+        return 'J'.str_pad($this->Id_Jornada, 5, '0', STR_PAD_LEFT);
     }
 
     use SoftDeletes, CascadeSoftDeletes;

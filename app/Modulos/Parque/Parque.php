@@ -8,6 +8,6 @@ class Parque extends MParque
 {
 	public function jornadas()
 	{
-		return $this->hasMany('App\Modulos\Parque\Parque', 'Id_Parque');
+		return $this->hasMany('App\Modulos\Escuela\Jornada', 'Id_Parque');
 	}
 }

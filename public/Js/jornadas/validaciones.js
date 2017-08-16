@@ -16,6 +16,18 @@ $(function()
         }
     });
 
+    $('select[name="Id_Parque"]').on('change', function (e) {
+        var localidad = $('select[name="Id_Parque"] option:selected').data('localidad');
+        $('select[name="Id_Localidad"]').selectpicker('val', localidad);
+
+        if($(this).val() == "0")
+        {
+            $('input[name="Otro"]').prop('readonly', false);
+        } else {
+            $('input[name="Otro"]').prop('readonly', true).val('');
+        }
+    });
+
     $('input[name="Edad_Usuario"]').on('change', function(e)
     {
         var edad = parseInt($(this).val());
@@ -47,6 +59,8 @@ $(function()
                {
                    $('input[name="Nombre_Usuario"]').val(user.Nombre_Usuario);
                    $('input[name="Edad_Usuario"]').val(user.Edad_Usuario).trigger('change');
+                   $('select[name="Nombre_Tipo_Documento_Usuario"]').val(user.Nombre_Tipo_Documento_Usuario).trigger('change');
+                   $('select[name="Destreza_Inicial_Usuario"]').val(user.Avance_Logrado_Usuario).trigger('change');
                    $('input[name="Genero_Usuario"][value="'+user.Genero_Usuario+'"]').trigger('click');
                }
            });

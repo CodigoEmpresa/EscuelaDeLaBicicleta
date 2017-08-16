@@ -40,23 +40,46 @@
 						<div class="col-md-3 form-group {{ $errors->has('Id_Parque') ? 'has-error' : '' }}">
 							<label for="" class="control-label">* Parque</label>
 							<select class="form-control" name="Id_Parque" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Id_Parque'] : old('Id_Parque') }}">
+                                <option data-localidad="0" value="0">OTRO</option>
 								@foreach($parques as $parque)
-									<option value="{{ $parque['Id'] }}">{{ $parque['Nombre'] }}</option>
+									<option data-localidad="{{ $parque['Id_Localidad'] }}" value="{{ $parque['Id'] }}">{{ $parque['Nombre'] }}</option>
 								@endforeach
 							</select>
 						</div>
-						<div class="col-md-3 form-group {{ $errors->has('Clima') ? 'has-error' : '' }}">
-							<label for="" class="control-label">* Clima</label>
-							<select class="form-control" name="Clima" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Clima'] : old('Clima') }}">
-								<option value="Lluvioso">Lluvioso</option>
-								<option value="Soleado">Soleado</option>
-							</select>
-						</div>
+                        <div class="col-md-3 form-group  {{ $errors->has('Id_Localidad') ? 'has-error' : '' }}">
+                            <label for="">Localidad</label>
+                            <select class="form-control" name="Id_Localidad" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Id_Localidad'] : old('Id_Localidad') }}">
+                                @foreach($localidades as $localidad)
+                                    <option value="{{ $localidad['Id_Localidad'] }}">{{ $localidad['Localidad'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3 form-group {{ $errors->has('Otro') ? 'has-error' : '' }}">
+                            <label for="">Otro</label>
+                            <input type="text" name="Otro" class="form-control" value="{{ $jornada ? $jornada['Otro'] : old('Otro') }}" {{ $jornada && $jornada['Id_Parque'] == '0' ? '' : 'readonly="readonly"' }}>
+                        </div>
+                        <div class="col-md-3 form-group {{ $errors->has('Clima') ? 'has-error' : '' }}">
+                            <label for="" class="control-label">* Clima</label>
+                            <select class="form-control" name="Clima" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Clima'] : old('Clima') }}">
+                                <option value="Lluvioso">Lluvioso</option>
+                                <option value="Soleado">Soleado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <br>
+                        </div>
 						<div class="col-md-3 form-group {{ $errors->has('Fecha') ? 'has-error' : '' }}">
 							<label for="" class="control-label">* Fecha</label>
 							<input class="form-control" type="text" name="Fecha" data-role="datepicker" value="{{ $jornada ? $jornada['Fecha'] : old('Fecha') }}">
 						</div>
-						<div class="col-md-3 form-group {{ $errors->has('Nombre_Encargado') ? 'has-error' : '' }}">
+                        <div class="col-md-3 form-group {{ $errors->has('Tipo') ? 'has-error' : '' }}">
+                            <label for="" class="control-label">Tipo</label>
+                            <select class="form-control" name="Tipo" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Tipo'] : old('Tipo') }}">
+                                <option value="Tipo 1">Tipo 1</option>
+                                <option value="Tipo 2">Tipo 2</option>
+                            </select>
+                        </div>
+						<div class="col-md-6 form-group {{ $errors->has('Nombre_Encargado') ? 'has-error' : '' }}">
 							<label for="" class="control-label">* Encargado(s) <small>separados por ","</small></label>
 							<input class="form-control" type="text" name="Nombre_Encargado" value="{{ $jornada ? $jornada['Nombre_Encargado'] : old('Nombre_Encargado', $promotor ? $promotor->persona->toFriendlyString() : '') }}">
 						</div>
@@ -135,7 +158,7 @@
                         <div class="row">
                             <div class="col-md-3 form-group">
                                 <div class="form-group">
-                                    <label class="control-label" for="Nombre_Tipo_Documento_Usuario">Tipo documento</label>
+                                    <label class="control-label" for="Nombre_Tipo_Documento_Usuario">* Tipo documento</label>
                                     <select class="form-control" name="Nombre_Tipo_Documento_Usuario" id="Nombre_Tipo_Documento_Usuario" title="Seleccionar" required>
                                         @foreach ($documentos as $documento)
                                             <option value="{{ $documento['Nombre_TipoDocumento'] }}">{{ $documento['Descripcion_TipoDocumento'] }}</option>
@@ -144,23 +167,23 @@
                                 </div>
                             </div>
                             <div class="col-md-3 form-group">
-                                <label class="control-label" for="Documento_Usuario">Documento</label>
+                                <label class="control-label" for="Documento_Usuario">* Documento</label>
                                 <div class="input-group">
                                     <input class="form-control" data-url="{{ url('jornadas/consultarUsuario') }}" name="Documento_Usuario" type="number" value="" required>
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label class="control-label">Nombre</label>
+                                <label class="control-label">* Nombre</label>
                                 <input class="form-control" name="Nombre_Usuario" type="text" value="" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label">Edad</label>
+                        <label class="control-label">* Edad</label>
                         <input class="form-control" name="Edad_Usuario" type="number" min=0 value="" required>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="CB_Usuario">Ciclo biológico</label>
+                        <label class="control-label" for="CB_Usuario">* Ciclo biológico</label>
                         <select class="form-control" name="CB_Usuario" id="CB_Usuario" title="Seleccionar" required>
                             <option value="P.I">Primera infancia</option>
                             <option value="I">Infancia</option>
@@ -170,7 +193,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="genero1">Género</label> <br>
+                        <label class="control-label" for="genero1">* Género</label> <br>
                         <label class="radio-inline">
                             <input type="radio" name="Genero_Usuario" id="genero1" value="M" required> Masculino
                         </label>
@@ -194,19 +217,19 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="form-group">
-                            <label class="control-label" for="Nombre_Acudiente">Nombre</label>
+                            <label class="control-label" for="Nombre_Acudiente">* Nombre</label>
                             <input class="form-control" name="Nombre_Acudiente" type="text" value="" required>
                         </div>
                     </div>
                     <div class="col-md-3 form-group">
                         <div class="form-group">
                             <label class="control-label" for="Email_Acudiente">Email</label>
-                            <input class="form-control" name="Email_Acudiente" type="text" value="" required>
+                            <input class="form-control" name="Email_Acudiente" type="text" value="">
                         </div>
                     </div>
                     <div class="col-md-3 form-group">
                         <div class="form-group">
-                            <label class="control-label" for="Telefono_Acudiente">Teléfono</label>
+                            <label class="control-label" for="Telefono_Acudiente">* Teléfono</label>
                             <input class="form-control" name="Telefono_Acudiente" type="number" value="" required>
                         </div>
                     </div>
@@ -217,15 +240,15 @@
                         <h5>Jornada</h5>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="Hora_Inicio_Usuario">Hora de inicio</label>
+                        <label class="control-label" for="Hora_Inicio_Usuario">* Hora de inicio</label>
                         <input class="form-control" name="Hora_Inicio_Usuario" data-role="clockpicker" data-rel="hora_inicio" type="text" required>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="Hora_Fin_Usuario">Hora de finalización</label>
+                        <label class="control-label" for="Hora_Fin_Usuario">* Hora de finalización</label>
                         <input class="form-control" name="Hora_Fin_Usuario" data-role="clockpicker" data-rel="hora_fin" type="text" required>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="Destreza_Inicial_Usuario">Destreza inicial</label>
+                        <label class="control-label" for="Destreza_Inicial_Usuario">* Destreza inicial</label>
                         <select class="form-control" name="Destreza_Inicial_Usuario" title="Seleccionar" required>
                             <option value="A">A - No sabe montar bicicleta</option>
                             <option value="B">B - Pedalea con ruedas de entrenamiento</option>
@@ -239,7 +262,7 @@
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label class="control-label" for="Avance_Logrado_Usuario">Avance logrado</label>
+                        <label class="control-label" for="Avance_Logrado_Usuario">* Avance logrado</label>
                         <select class="form-control" name="Avance_Logrado_Usuario" title="Seleccionar" required>
                             <option value="A">A - No sabe montar bicicleta</option>
                             <option value="B">B - Pedalea con ruedas de entrenamiento</option>

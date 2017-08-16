@@ -36,7 +36,7 @@ class JornadaController extends Controller
 			$qb = null;
 			$elementos = $qb;
 		} else {
-			$qb = Jornada::with('parque', 'usuarios')
+			$qb = Jornada::with('usuarios')
 							->where('Id_Promotor', $this->promotor['Id_Promotor']);
 
 			$qb = $this->aplicarFiltro($qb, $request);
@@ -72,6 +72,7 @@ class JornadaController extends Controller
 			'jornada' => $jornada,
 			'promotor' => $this->promotor,
 			'parques' => $this->parquesHabilitados(),
+			'localidades' => Localidad::all(),
 			'documentos' => Documento::all(),
 	        'paises' => Pais::all(),
 	        'etnias' => Etnia::all(),
@@ -97,6 +98,9 @@ class JornadaController extends Controller
 
     	$jornada->Id_Promotor = $request->input('Id_Promotor');
 		$jornada->Id_Parque = $request->input('Id_Parque');
+        $jornada->Id_Localidad = $request->input('Id_Localidad');
+        $jornada->Otro = $request->input('Otro');
+        $jornada->Tipo = $request->input('Tipo');
 		$jornada->Fecha = $request->input('Fecha');
 		$jornada->Clima = $request->input('Clima');
 		$jornada->Nombre_Encargado = $request->input('Nombre_Encargado');
@@ -117,7 +121,7 @@ class JornadaController extends Controller
 
     public function consultarUsuario(Request $request)
     {
-        $persona = Usuario::where('Documento_Usuario', $request->input('key'))->first();
+        $persona = Usuario::where('Documento_Usuario', $request->input('key'))->orderBy('Id_Usuario', 'desc')->first();
 
         return response()->json($persona);
     }

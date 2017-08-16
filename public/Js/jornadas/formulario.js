@@ -24,10 +24,8 @@ $(function()
     ];
 
 	var objects = {};
+	var table_objects = $(table).DataTable();
     var old_objects = $.parseJSON($(input).val() || null) || {};
-    var table_objects = $(table).DataTable({ "language": {
-        "url": 'public/Spanish.json'
-    }});
 
     function generateUUID() 
     {
@@ -67,7 +65,6 @@ $(function()
     function eliminarObject(current)
     {
         var $odl_tr = $(table+' tr[id="'+current[pk_object]+'"]');
-
         if ($odl_tr.length)
         {
             table_objects.row($odl_tr).remove().draw();
@@ -110,7 +107,13 @@ $(function()
     {
         var id = $(this).closest('tr').prop('id');
         var object = objects[id];
-        eliminarObject(object);
+
+        if(eliminarObject(object))
+        {
+            delete objects[id];
+        }
+
+        e.preventDefault();
     });
 
     $('#table_objects').delegate('a[data-role="editar"]', 'click', function(e)
@@ -120,6 +123,7 @@ $(function()
         populateObject(object);
         $(form).validator('validate');
         $(modal).modal('show');
+        e.preventDefault();
     });
 
     $('#agregar').on('click', function(e)
@@ -131,7 +135,7 @@ $(function()
         $(modal).modal('show');
     });
 
-    $(principal).on('submit', function(e)
+    $('#principal').on('submit', function(e)
     {
         $(input).val(JSON.stringify(objects));
     });
