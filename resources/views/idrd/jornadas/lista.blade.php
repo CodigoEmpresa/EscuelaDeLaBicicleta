@@ -19,11 +19,16 @@
                     <div class="col-md-2 form-group">
                         <label for="">Parque</label>
                         <select name="parque" id="parque" title="Parque" class="form-control" data-value="{{ old('parque') }}">
-                            <option value="Todos">Todos</option>
+                            <option value="Todos">TODOS</option>
+                            <option value="Otro">OTRO</option>
                             @foreach($parques as $parque)
                                 <option value="{{ $parque['Id'] }}">{{ $parque['Nombre'] }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label for="">Otro</label>
+                        <input type="text" name="Otro" class="form-control" value="" readonly="readonly">
                     </div>
                     <div class="col-md-2 form-group">
                         <label for="">Desde</label>
@@ -95,3 +100,9 @@
         @endif
     </div>
 </div>
+<script>
+    $(function()
+    {
+
+    });
+</script>
