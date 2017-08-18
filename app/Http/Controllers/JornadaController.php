@@ -128,10 +128,12 @@ class JornadaController extends Controller
 
     private function aplicarFiltro($qb, $request)
 	{
-		if($request->input('parque') && $request->input('parque') != 'Todos')
+		if($request->input('parque') && ($request->input('parque') != 'Todos' && $request->input('parque') != "Otro"))
 		{
 			$qb->where('Id_Parque', $request->input('parque'));
-		}
+		} else if ($request->input('parque') == "otros") {
+            $qb->whereRaw('Otro LIKE "%'.$request->input("Otro").'%"', []);
+        }
 
 		if($request->input('desde'))
 		{

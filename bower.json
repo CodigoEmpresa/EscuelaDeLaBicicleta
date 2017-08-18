@@ -26,6 +26,8 @@
     "font-awesome": "Font-Awesome#^4.7.0",
     "bootstrap-select": "^1.12.2",
     "bootstrap-validator": "^0.11.9",
-    "datatables.net-responsive-dt": "^2.1.1"
+    "datatables.net-responsive-dt": "^2.1.1",
+    "datatables.net-buttons": "^1.4.0",
+    "datatables.net-buttons-dt": "^1.4.0"
   }
 }

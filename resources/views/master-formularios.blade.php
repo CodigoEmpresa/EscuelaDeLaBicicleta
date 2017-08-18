@@ -20,6 +20,7 @@
           <link rel="stylesheet" href="{{ asset('public/components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}" media="screen">
           <link rel="stylesheet" href="{{ asset('public/components/selectize/dist/css/selectize.bootstrap3.css') }}" media="screen">
           <link rel="stylesheet" href="{{ asset('public/components/datatables.net-bs/css/dataTables.bootstrap.css') }}" media="screen">
+          <link rel="stylesheet" href="{{ asset('public/components/datatables.net-buttons-dt/css/buttons.dataTables.css') }}" media="screen">
           <link rel="stylesheet" href="{{ asset('public/components/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}" media="screen">
           <link rel="stylesheet" href="{{ asset('public/components/highcharts/css/highcharts.css') }}" media="screen">
           <link rel="stylesheet" href="{{ asset('public/components/font-awesome/css/font-awesome.css') }}" media="screen">
@@ -35,6 +36,11 @@
           <script src="{{ asset('public/components/moment/moment.js') }}"></script>
           <script src="{{ asset('public/components/datatables.net/js/jquery.dataTables.js') }}"></script>
           <script src="{{ asset('public/components/datatables.net-bs/js/dataTables.bootstrap.js') }}"></script>
+          <script src="{{ asset('public/components/datatables.net-buttons/js/dataTables.buttons.js') }}"></script>
+          <script src="{{ asset('public/components/datatables.net-buttons/js/buttons.html5.js') }}"></script>
+          <script src="{{ asset('public/components/datatables.net-buttons/js/buttons.colVis.js') }}"></script>
+          <script src="{{ asset('public/components/datatables.net-buttons/js/buttons.flash.js') }}"></script>
+          <script src="{{ asset('public/components/datatables.net-buttons/js/buttons.print.js') }}"></script>
           <script src="{{ asset('public/components/datatables.net-responsive/js/dataTables.responsive.js') }}"></script>
           <script src="{{ asset('public/components/highcharts/js/highcharts.js') }}"></script>
           <script src="{{ asset('public/components/selectize/dist/js/standalone/selectize.js') }}"></script>
@@ -54,12 +60,12 @@
           <div class="page-header" id="banner">
             <div class="row">
               <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Escuela de la bicicleta <span class="text-default">{{ date('Y') }}</span></h1>
+                  <img src="{{ asset('public/Img/logo.png') }}" style="height: 184px; margin-left: -15px;">
                 <p class="lead"><h4>{{ $titulo }}</h4></p>
               </div>
               <div class="col-lg-4 col-md-5 col-sm-6">
                  <div align="right">
-                    <img src="{{ asset('public/Img/IDRD.png') }}" width="250px"/>
+                    <img src="{{ asset('public/Img/IDRD.png') }}" width="250px" style="margin-top: 30px;"/>
                  </div>
               </div>
             </div>

@@ -7,10 +7,10 @@ $(function() {
         "url": 'public/Spanish.json'
     },responsive:true, dom: 'Bfrtip',
         buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            {extend: 'pdfHtml5',
+            'csv',
+            'excel',
+            'print',
+            {extend: 'pdf',
                 orientation: 'landscape',
                 pageSize: 'LEGAL'}
 
@@ -38,10 +38,10 @@ $(function() {
                 },
                 dom: 'Bfrtip',
                     buttons: [
-                    'copyHtml5',
-                    'excelHtml5',
-                    'csvHtml5',
-                        {extend: 'pdfHtml5',
+                        'csv',
+                        'excel',
+                        'print',
+                        {extend: 'pdf',
                             orientation: 'landscape',
                             pageSize: 'LEGAL'}
 

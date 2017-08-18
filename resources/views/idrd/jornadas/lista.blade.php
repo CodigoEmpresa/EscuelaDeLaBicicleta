@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-2 form-group">
                         <label for="">Otro</label>
-                        <input type="text" name="Otro" class="form-control" value="" readonly="readonly">
+                    <input type="text" name="Otro" class="form-control" value="{{ old("Otro") }}" {{ old('parque') == "Otro" ? '' : 'readonly="readonly"' }}>
                     </div>
                     <div class="col-md-2 form-group">
                         <label for="">Desde</label>
@@ -55,16 +55,22 @@
                  <table class="default display no-wrap responsive table table-min table-striped" width="100%">
                     <thead>
                         <tr>
-                            <th>
+                            <th style="width: 90px;">
                                 Cod.
                             </th>
-                            <th>
+                            <th style="width: 90px;">
                                 Fecha
                             </th>
-                            <th>
-                                Parque
+                            <th style="width: 90px;">
+                                Tipo
+                            </th>
+                            <th style="width: 90px;">
+                                Localidad
                             </th>
                             <th>
+                                Parque / Lugar
+                            </th>
+                            <th style="width: 90px;">
                                 # Usuarios
                             </th>
                             <th data-priority="2" class="no-sort" style="width: 30px;">
@@ -82,7 +88,13 @@
                                     {{ $jornada->Fecha }}
                                 </td>
                                 <td>
-                                    {{ $jornada->parque['Nombre'] }}
+                                    {{ $jornada->Tipo }}
+                                </td>
+                                <td>
+                                    {{ $jornada->localidad['Localidad'] }}
+                                </td>
+                                <td>
+                                    {{ $jornada->Id_Parque == 0 ? $jornada->Otro : $jornada->parque['Nombre'] }}
                                 </td>
                                 <td>
                                     {{ $jornada->usuarios->count() }}
@@ -103,6 +115,13 @@
 <script>
     $(function()
     {
-
+        $('select[name="parque"]').on('change', function(e)
+        {
+            if ($(this).val() == 'Otro') {
+                $('input[name="Otro"]').prop('readonly', false);
+            } else {
+                $('input[name="Otro"]').prop('readonly', true).val('');
+            }
+        });
     });
 </script>
