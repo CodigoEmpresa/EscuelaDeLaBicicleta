@@ -38,7 +38,7 @@
                             <h4>Datos generales de la jornada</h4>
                         </div>
 						<div class="col-md-3 form-group {{ $errors->has('Id_Parque') ? 'has-error' : '' }}">
-							<label for="" class="control-label">* Parque</label>
+							<label for="" class="control-label">* Lugar</label>
 							<select class="form-control" name="Id_Parque" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Id_Parque'] : old('Id_Parque') }}">
                                 <option data-localidad="0" value="0">OTRO</option>
 								@foreach($parques as $parque)
@@ -75,8 +75,10 @@
                         <div class="col-md-3 form-group {{ $errors->has('Tipo') ? 'has-error' : '' }}">
                             <label for="" class="control-label">Tipo</label>
                             <select class="form-control" name="Tipo" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Tipo'] : old('Tipo') }}">
-                                <option value="Tipo 1">Tipo 1</option>
-                                <option value="Tipo 2">Tipo 2</option>
+                                <option value="Proceso de aprendizaje">Proceso de aprendizaje</option>
+                                <option value="Taller de mecánica">Taller de mecánica</option>
+                                <option value="Ciclo expedición">Ciclo expedición</option>
+                                <option value="Extemporaneo">Extemporaneo</option>
                             </select>
                         </div>
 						<div class="col-md-6 form-group {{ $errors->has('Nombre_Encargado') ? 'has-error' : '' }}">

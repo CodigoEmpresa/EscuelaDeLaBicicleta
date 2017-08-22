@@ -38,7 +38,7 @@ class GuardarJornada extends Request
     {
         return [
             'Fecha.required' => 'El campo fecha es requerido',
-            'Id_Parque.required' => 'El campo parque es requerido',
+            'Id_Parque.required' => 'El campo lugar es requerido',
             'Id_Localidad.required' => 'El campo parque es requerido',
             'Tipo.required' => 'El campo tipo es requerido',
             'Otro.required_if' => 'El campo otro es requerido cuando no se selecciona un parque',
