@@ -47,7 +47,7 @@
 							</select>
 						</div>
                         <div class="col-md-3 form-group  {{ $errors->has('Id_Localidad') ? 'has-error' : '' }}">
-                            <label for="">Localidad</label>
+                            <label for="">* Localidad</label>
                             <select class="form-control" name="Id_Localidad" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Id_Localidad'] : old('Id_Localidad') }}">
                                 @foreach($localidades as $localidad)
                                     <option value="{{ $localidad['Id_Localidad'] }}">{{ $localidad['Localidad'] }}</option>
@@ -73,7 +73,7 @@
 							<input class="form-control" type="text" name="Fecha" data-role="datepicker" value="{{ $jornada ? $jornada['Fecha'] : old('Fecha') }}">
 						</div>
                         <div class="col-md-3 form-group {{ $errors->has('Tipo') ? 'has-error' : '' }}">
-                            <label for="" class="control-label">Tipo</label>
+                            <label for="" class="control-label">* Tipo</label>
                             <select class="form-control" name="Tipo" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Tipo'] : old('Tipo') }}">
                                 <option value="Proceso de aprendizaje">Proceso de aprendizaje</option>
                                 <option value="Taller de mecánica">Taller de mecánica</option>

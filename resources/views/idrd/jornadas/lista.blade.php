@@ -17,8 +17,8 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-2 form-group">
-                        <label for="">Parque</label>
-                        <select name="parque" id="parque" title="Parque" class="form-control" data-value="{{ old('parque') }}">
+                        <label for="">Lugar</label>
+                        <select name="parque" id="parque" title="Seleccionar" class="form-control" data-value="{{ old('parque') }}">
                             <option value="Todos">TODOS</option>
                             <option value="Otro">OTRO</option>
                             @foreach($parques as $parque)
