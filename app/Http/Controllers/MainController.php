@@ -65,7 +65,7 @@ class MainController extends Controller {
 			$permisos = [
 				'administrar_promotores' => array_key_exists(1, $permissions_array) ? intval($permissions_array[1]) : 0,
 				'administrar_jornadas' => array_key_exists(2, $permissions_array) ? intval($permissions_array[2]) : 0,
-				'administrar_reportes' => array_key_exists(2, $permissions_array) ? intval($permissions_array[3]) : 0
+				'administrar_reportes' => array_key_exists(3, $permissions_array) ? intval($permissions_array[3]) : 0
 			];
 
 			$_SESSION['Usuario'] = $user_array;

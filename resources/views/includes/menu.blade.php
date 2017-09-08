@@ -26,8 +26,16 @@
 					</li>
 				@endif
 				@if($_SESSION['Usuario']['Permisos']['administrar_jornadas'])
-					<li class="{{ $seccion && in_array($seccion, ['Gestores']) ? 'active' : '' }}">
-						<a href="{{ url('jornadas') }}">Jornadas</a>
+					<li class="dropdown {{ $seccion && in_array($seccion, ['Buscar jornadas', 'Crear jornadas']) ? 'active' : '' }}">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Jornadas <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li class="{{ $seccion && in_array($seccion, ['Buscar jornadas']) ? 'active' : '' }}">
+								<a href="{{ url('jornadas') }}">Buscar</a>
+							</li>
+							<li class="{{ $seccion && in_array($seccion, ['Crear jornadas']) ? 'active' : '' }}">
+								<a href="{{ url('jornadas/formulario') }}">Crear</a>
+							</li>
+						</ul>
 					</li>
 				@endif
 				@if($_SESSION['Usuario']['Permisos']['administrar_reportes'])
