@@ -54,7 +54,7 @@ class JornadaController extends Controller
 
 		$datos = [
 			'titulo' => 'Jornadas promotor',
-			'seccion' => 'Jornadas promotor',
+			'seccion' => 'Buscar jornadas',
 			'lista'	=> view('idrd.jornadas.lista', $lista)
 		];
 
@@ -82,7 +82,7 @@ class JornadaController extends Controller
 
 		$datos = [
 			'titulo' => 'Crear ó editar jornadas',
-			'seccion' => 'Promotores',
+			'seccion' => 'Crear jornadas',
 			'formulario' => view('idrd.jornadas.formulario', $formulario)
 		];
 

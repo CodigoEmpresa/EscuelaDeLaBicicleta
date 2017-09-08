@@ -43,7 +43,6 @@
                         <input type="hidden" name="_method" value="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-success">Buscar</button>
-                        <a class="btn btn-primary" href="{{ url('jornadas/formulario') }}">Crear</a>
                     </div>
                 </div>
             </div>

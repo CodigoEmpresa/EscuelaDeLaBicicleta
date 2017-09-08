@@ -37,7 +37,7 @@ $(function()
         else if (edad < 12) {cb = "I";}
         else if (edad < 18) {cb = "ADO";}
         else if (edad < 60) {cb = "ADU";}
-        else if (edad > 60) {cb = "VE";}
+        else if (edad >= 60) { cb = "VE"; }
 
         $('select[name="CB_Usuario"]').val(cb).trigger('change');
     });
