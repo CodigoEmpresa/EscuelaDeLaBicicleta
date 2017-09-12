@@ -66,7 +66,7 @@ class JornadaController extends Controller
     	$jornada = null;
 
     	if ($id_jornada)
-    		$jornada = Jornada::with('parque')->find($id_jornada);
+    		$jornada = Jornada::with('usuarios.jornadas', 'parque')->find($id_jornada);
 
     	$formulario = [
 			'jornada' => $jornada,
@@ -121,7 +121,9 @@ class JornadaController extends Controller
 
     public function consultarUsuario(Request $request)
     {
-        $persona = Usuario::where('Documento_Usuario', $request->input('key'))->orderBy('Id_Usuario', 'desc')->first();
+        $persona = Usuario::with(['jornadas' => function($query){
+                $query->where('Tipo', 'Ciclo expedición');
+            }])->where('Documento_Usuario', $request->input('key'))->orderBy('Id_Usuario', 'desc')->first();
 
         return response()->json($persona);
     }

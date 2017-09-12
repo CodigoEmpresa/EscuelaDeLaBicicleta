@@ -57,6 +57,11 @@ $(function()
            ).done(function(user) {
                if(!$.isEmptyObject(user))
                {
+                   if (user.jornadas)
+                   {
+                        alert('Esta persona ya culminó proceso de enseñanza en la escuela de la bicicleta');
+                   }
+
                    $('input[name="Nombre_Usuario"]').val(user.Nombre_Usuario);
                    $('input[name="Edad_Usuario"]').val(user.Edad_Usuario).trigger('change');
                    $('select[name="Nombre_Tipo_Documento_Usuario"]').val(user.Nombre_Tipo_Documento_Usuario).trigger('change');

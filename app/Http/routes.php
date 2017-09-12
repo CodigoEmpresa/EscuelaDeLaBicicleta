@@ -17,12 +17,16 @@ Route::get('/personas/service/ciudad/{id_pais}', '\Idrd\Usuarios\Controllers\Loc
 Route::post('/personas/service/procesar/', '\Idrd\Usuarios\Controllers\PersonaController@procesar');
 
 
-Route::any('/', 'MainController@index');
-Route::any('/logout', 'MainController@logout');
+Route::group(['middleware' => ['web']], function () {
+    Route::any('/', 'MainController@index');
+    Route::get('/welcome', 'MainController@welcome');
+    Route::any('/logout', 'MainController@logout');
+    Route::get('/certificado', 'CertificadoController@index');
+    Route::post('/certificado', 'CertificadoController@generar');
+});
 
 //rutas con filtro de autenticación
-Route::group(['middleware' => ['web']], function () {
-	Route::get('/welcome', 'MainController@welcome');
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::any('/reportes', 'MainController@reporte');
     Route::any('/fecha_reporte', 'MainController@fecha_reporte');
 	Route::get('/promotores', 'PromotorController@index');

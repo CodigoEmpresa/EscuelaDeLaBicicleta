@@ -10,7 +10,8 @@
         "iatstuti/laravel-cascade-soft-deletes": "1.0.*",
         "idrd/usuarios": "dev-master",
         "idrd/parques": "dev-master",
-        "yajra/laravel-datatables-oracle": "^6"
+        "yajra/laravel-datatables-oracle": "^6",
+        "barryvdh/laravel-dompdf": "^0.8.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
