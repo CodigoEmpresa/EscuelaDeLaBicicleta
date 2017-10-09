@@ -1,5 +1,37 @@
+<?php
+    function mes($mes)
+    {
+        switch (+$mes)
+        {
+            case 1:
+                return 'Enero';
+            case 2:
+                return 'Febrero';
+            case 3:
+                return 'Marzo';
+            case 4:
+                return 'Abril';
+            case 5:
+                return 'Mayo';
+            case 6:
+                return 'Junio';
+            case 7:
+                return 'Julio';
+            case 8:
+                return 'Agosto';
+            case 9:
+                return 'Septiembre';
+            case 10:
+                return 'Octubre';
+            case 11:
+                return 'Noviembre';
+            case 12:
+                return 'Diciembre';
+        }
+    }
+?>
 <!doctype html>
-<html lang="s">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -14,7 +46,7 @@
             position:absolute;
             margin-top: -20px;
         }
-        h4 {
+        h4, .dia, .mes {
             font-family: Verdana, Helvetica, "Gill Sans", sans-serif;
             font-weight: 300;
             position: absolute;
@@ -24,10 +56,22 @@
             z-index: 10;
             font-size: 30px;
         }
+        .dia {
+            font-size: 20px;
+            top: 420px;
+            left: -95px;
+        }
+        .mes {
+            text-align: left;
+            font-size: 20px;
+            top: 420px;
+            left: 575px;
+        }
     </style>
 </head>
 <body>
     <img src="{{ asset('public/Img/diploma.jpg') }}" alt="" class="back">
     <h4>{{ $nombre }}</h4>
+    <span class="dia">{{ date('d') }}</span><span class="mes">{{ mes(date('m')) }}</span>
 </body>
 </html>
