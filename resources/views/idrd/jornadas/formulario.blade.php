@@ -2,8 +2,8 @@
     @parent
 
     <script src="{{ asset('public/components/bootstrap-validator/dist/validator.min.js') }}"></script>
-    <script src="{{ asset('public/Js/jornadas/formulario.js') }}"></script>
-    <script src="{{ asset('public/Js/jornadas/validaciones.js') }}"></script>
+    <script src="{{ asset('public/Js/jornadas/formulario.js?v=1') }}"></script>
+    <script src="{{ asset('public/Js/jornadas/validaciones.js?v=1') }}"></script>
 @stop
 
 <div class="content">

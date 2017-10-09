@@ -1,5 +1,16 @@
 $(function()
 {
+    function validarTallerDeMecanica()
+    {
+        if($('select[name="Tipo"]').val() === 'Taller de mecánica')
+        {
+            $('select[name="Destreza_Inicial_Usuario"]').prop('required', false).val('');
+            $('select[name="Avance_Logrado_Usuario"]').prop('required', false).val('');
+        } else {
+            $('select[name="Destreza_Inicial_Usuario"]').prop('required', true).val('');
+            $('select[name="Avance_Logrado_Usuario"]').prop('required', true).val('');
+        }
+    }
     $('input[name="Acudiente_Es_Usuario"]').on('click', function(e)
     {
         if($(this).is(':checked'))
@@ -26,6 +37,10 @@ $(function()
         } else {
             $('input[name="Otro"]').prop('readonly', true).val('');
         }
+    });
+
+    $('select[name="Tipo"]').on('change', function (e) {
+        validarTallerDeMecanica();
     });
 
     $('input[name="Edad_Usuario"]').on('change', function(e)
@@ -62,13 +77,23 @@ $(function()
                         alert('Esta persona ya culminó proceso de enseñanza en la escuela de la bicicleta');
                    }
 
-                   $('input[name="Nombre_Usuario"]').val(user.Nombre_Usuario);
+                   $('input[name="Nombre_Usuario"]').val(user.Nombre_Usuario).trigger('change');
+                   $('input[name="Nombre_Acudiente"]').val(user.Nombre_Acudiente).trigger('change');
+                   $('input[name="Email_Acudiente"]').val(user.Email_Acudiente).trigger('change');
+                   $('input[name="Telefono_Acudiente"]').val(user.Telefono_Acudiente).trigger('change');
+                   $('input[name="Acudiente_Es_Usuario"]').prop('checked', user.Acudiente_Es_Usuario === '1' ? 'true' : 'false');
                    $('input[name="Edad_Usuario"]').val(user.Edad_Usuario).trigger('change');
-                   $('select[name="Nombre_Tipo_Documento_Usuario"]').val(user.Nombre_Tipo_Documento_Usuario).trigger('change');
-                   $('select[name="Destreza_Inicial_Usuario"]').val(user.Avance_Logrado_Usuario).trigger('change');
                    $('input[name="Genero_Usuario"][value="'+user.Genero_Usuario+'"]').trigger('click');
+
+                   if($('select[name="Tipo"]').val() !== 'Taller de mecánica')
+                   {
+                       $('select[name="Nombre_Tipo_Documento_Usuario"]').val(user.Nombre_Tipo_Documento_Usuario).trigger('change');
+                       $('select[name="Destreza_Inicial_Usuario"]').val(user.Avance_Logrado_Usuario).trigger('change');
+                   }
                }
            });
         }
     });
+
+    validarTallerDeMecanica();
 });
