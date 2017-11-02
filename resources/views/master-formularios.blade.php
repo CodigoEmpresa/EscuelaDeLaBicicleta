@@ -34,6 +34,7 @@
           <script src="{{ asset('public/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
           <script src="{{ asset('public/components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
           <script src="{{ asset('public/components/moment/moment.js') }}"></script>
+          <script src="{{ asset('public/components/jszip/dist/jszip.js') }}"></script>
           <script src="{{ asset('public/components/datatables.net/js/jquery.dataTables.js') }}"></script>
           <script src="{{ asset('public/components/datatables.net-bs/js/dataTables.bootstrap.js') }}"></script>
           <script src="{{ asset('public/components/datatables.net-buttons/js/dataTables.buttons.js') }}"></script>

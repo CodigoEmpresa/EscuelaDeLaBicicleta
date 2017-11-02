@@ -63,6 +63,7 @@
                             <select class="form-control" name="Clima" id="" title="Seleccionar" data-value="{{ $jornada ? $jornada['Clima'] : old('Clima') }}">
                                 <option value="Lluvioso">Lluvioso</option>
                                 <option value="Soleado">Soleado</option>
+                                <option value="Nublado">Nublado</option>
                             </select>
                         </div>
                         <div class="col-md-12">

@@ -41,10 +41,11 @@ $(function() {
                         'csv',
                         'excel',
                         'print',
-                        {extend: 'pdf',
+                        {
+                            extend: 'pdf',
                             orientation: 'landscape',
-                            pageSize: 'LEGAL'}
-
+                            pageSize: 'LEGAL'
+                        }
                 ],
                 responsive:true,
                 processing: true,
