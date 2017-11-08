@@ -233,7 +233,7 @@
                     <div class="col-md-3 form-group">
                         <div class="form-group">
                             <label class="control-label" for="Telefono_Acudiente">* Teléfono</label>
-                            <input class="form-control" name="Telefono_Acudiente" type="number" value="" required>
+                            <input class="form-control" name="Telefono_Acudiente" type="number" value="">
                         </div>
                     </div>
                     <div class="col-md-12">

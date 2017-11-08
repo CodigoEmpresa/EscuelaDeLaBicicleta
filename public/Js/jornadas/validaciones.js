@@ -2,7 +2,7 @@ $(function()
 {
     function validarTallerDeMecanica()
     {
-        if($('select[name="Tipo"]').val() === 'Taller de mecánica')
+        if($('select[name="Tipo"]').val() === 'Taller de mecánica' || $('select[name="Tipo"]').val() === 'Ciclo expedición')
         {
             $('select[name="Destreza_Inicial_Usuario"]').prop('required', false).val('');
             $('select[name="Avance_Logrado_Usuario"]').prop('required', false).val('');
