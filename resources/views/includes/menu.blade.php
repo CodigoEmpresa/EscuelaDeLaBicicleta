@@ -40,8 +40,16 @@
 						</li>
 					@endif
 					@if($_SESSION['Usuario']['Permisos']['administrar_reportes'])
-						<li class="{{ $seccion && in_array($seccion, ['Reportes']) ? 'active' : '' }}">
-							<a href="{{ url('reportes') }}">Reportes</a>
+						<li class="dropdown {{ $seccion && in_array($seccion, ['Reporte general', 'Reporte consolidado']) ? 'active' : '' }}">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="{{ $seccion && in_array($seccion, ['Reporte general']) ? 'active' : '' }}">
+									<a href="{{ url('reporte_asistencia') }}">General</a>
+								</li>
+								<li class="{{ $seccion && in_array($seccion, ['Reporte consolidado']) ? 'active' : '' }}">
+									<a href="{{ url('reporte_consolidado') }}">Total asistencia</a>
+								</li>
+							</ul>
 						</li>
 					@endif
 				@endif

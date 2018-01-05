@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Idrd\Usuarios\Repo\PersonaInterface;
+use App\Modulos\Parque\Parque;
 use Illuminate\Http\Request;
-use DB;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Session;
 
@@ -36,25 +37,67 @@ class MainController extends Controller {
 
     public function reporte()
     {
-
-       $datos = [
-            'titulo' => 'Reporte',
-            'seccion' => 'Reporte',
+        $datos = [
+            'titulo' => 'Reporte general',
+            'seccion' => 'Reporte general',
             'formulario' => ''
         ];
+
         return view('reporte',$datos);
     }
 
-    public function fecha_reporte(Request $request){
+    public function fecha_reporte(Request $request) {
+       return Datatables::of(DB::table('vista_reporte')->whereBetween('Fecha', [$request[0]['value'],$request[1]['value']]))->make(true);
+    }
 
-       return Datatables::of(DB::table('vista_reporte')->whereBetween('Fecha',[$request[0]['value'],$request[1]['value']]))->make(true);
+    public function reporte_consolidado()
+    {
+    	return $this->view_reporte_consolidado(null);
+    }
 
+    public function reporte_consolidado_search(Request $request) {
+    	$escenarios = Parque::with(['jornadas' => function($query) use ($request) {
+    		$query->with('usuarios');
+	    	if ($request->has('fechai')) {
+	    		$query->where('fecha', '>=', $request->input('fechai'));
+	    	}
+
+	    	if ($request->has('fechaf')) {
+	    		$query->where('fecha', '<=', $request->input('fechaf'));
+	    	}
+    	}])->whereHas('jornadas', function($query) use ($request) {
+    		$query->whereNull('deleted_at');
+			if ($request->has('fechai')) {
+	    		$query->where('fecha', '>=', $request->input('fechai'));
+	    	}
+
+	    	if ($request->has('fechaf')) {
+	    		$query->where('fecha', '<=', $request->input('fechaf'));
+	    	}
+    	})->get();
+
+    	return $this->view_reporte_consolidado($escenarios);	
+    }
+
+    private function view_reporte_consolidado($informacion = null) {
+
+    	if ($informacion != null) {
+    		dd($informacion);
+    	}
+
+    	$datos = [
+            'titulo' => 'Reporte consolidado',
+            'seccion' => 'Reporte consolidado',
+            'datos' => $informacion
+        ];
+
+        return view('reporte-consolidado', $datos);
     }
 
     public function index(Request $request)
 	{
-		//$fake_permissions = ['71766', '1', '1', '1'];
-		$fake_permissions = null;
+		$fake_permissions = ['71766', '1', '1', '1'];
+		//$fake_permissions = null;
 
 		if ($request->has('vector_modulo') || $fake_permissions)
 		{	

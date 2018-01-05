@@ -23,13 +23,11 @@ $(function() {
         var formURL = formObj.attr("action");
         var formData = new FormData(this);
 
-
         if ( $.fn.DataTable.isDataTable('.datatable') ) {
             $('.datatable').DataTable().destroy();
         }
 
         $('#tblRemittanceList tbody').empty();
-
 
             table = $('.datatable');
             table.DataTable({
