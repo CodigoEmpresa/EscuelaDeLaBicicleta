@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Idrd\Usuarios\Repo\PersonaInterface;
@@ -65,6 +66,8 @@ class MainController extends Controller {
 	    	if ($request->has('fechaf')) {
 	    		$query->where('fecha', '<=', $request->input('fechaf'));
 	    	}
+
+	    	$query->orderBy('Fecha');
     	}])->whereHas('jornadas', function($query) use ($request) {
     		$query->whereNull('deleted_at');
 			if ($request->has('fechai')) {
@@ -79,16 +82,26 @@ class MainController extends Controller {
     	return $this->view_reporte_consolidado($escenarios);	
     }
 
-    private function view_reporte_consolidado($informacion = null) {
+    private function view_reporte_consolidado($escenarios = null) {
+    	$informe = is_null($escenarios) ? null : [];
 
-    	if ($informacion != null) {
-    		dd($informacion);
+    	if ($escenarios != null) {
+    		foreach ($escenarios as $escenario) {
+    			array_push($informe, [
+    				'escenario' => $escenario,
+    				'jornadas' => $escenario->jornadas->groupBy(function($item, $key) {
+    					return Carbon::createFromFormat('Y-m-d', $item->Fecha)->format('Y-m');
+    				})
+    			]);
+    		}
+
+    		//dd($informe[0]);
     	}
 
     	$datos = [
             'titulo' => 'Reporte consolidado',
             'seccion' => 'Reporte consolidado',
-            'datos' => $informacion
+            'datos' => $informe
         ];
 
         return view('reporte-consolidado', $datos);

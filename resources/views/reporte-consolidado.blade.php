@@ -44,6 +44,24 @@
                 </tr>
             </thead>
             <tbody>
+                @if($datos)
+                    @foreach($datos as $registro)
+                        @foreach($registro['jornadas'] as $key => $jornadas)
+                            @php
+                                $participantes = 0;
+                                foreach ($jornadas as $jornada) {
+                                    $participantes += $jornada->usuarios->count();
+                                }
+                            @endphp
+                            <tr>
+                                <td>{{ $registro['escenario']->Id }}</td>
+                                <td>{{ $registro['escenario']->Nombre }}</td>
+                                <td>{{ $key }}</td>
+                                <td>{{ $participantes }}</td>
+                            </tr>
+                        @endforeach
+                    @endforeach
+                @endif
             </tbody>
             <tfoot>
                 <tr>
